@@ -12,6 +12,7 @@ namespace StudentInformationSystem.Models
         //structure of student
         /*
          */
+        public int Id { get; set; }
         public string NIM { get; set; } = "";
         public string Name { get; set; } = "";
         public string Major { get; set; } = "";

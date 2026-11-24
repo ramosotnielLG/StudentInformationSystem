@@ -1,24 +1,34 @@
 ﻿/*
- NIM: 2481032
- Name: Ramos Otniel Lumban Gaol
- Course: Framework .NET Programming
- */
+Name: Ramos Otniel Lumban Gaol
+Student ID: 2481032
+
+*/
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StudentInformationSystem.Data;
-using StudentInformationSystem.Models;
 
-namespace StudentInformationSystem.Controllers
+namespace StudentInformationSystem.Controllers;
+
+public class StudentController : Controller
 {
-    public class StudentController : Controller
-    {
-        public IActionResult Profile()
-        {
-            //create a new student object
-            Student student = StudentData.Students[0];
-            //assign an example of student info
+    private readonly ApplicationDbContext _db;
 
-            return View(student);
-        }
+    public StudentController(ApplicationDbContext db)
+    {
+        _db = db;
+    }
+
+    public async Task<IActionResult> Profile(string? nim)
+    {
+        nim ??= "2481032";
+
+        var student = await _db.Students
+            .AsNoTracking()
+            .FirstOrDefaultAsync(s => s.NIM == nim);
+
+        if (student is null) return NotFound();
+
+        return View(student);
     }
 }

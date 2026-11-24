@@ -3,12 +3,25 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Sensitive local files
+.env
+.env.*
+**/secrets.json
+
 # User-specific files
 *.rsuser
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
+
+# Build output
+**/bin/
+**/obj/
+
+# Local editor and IDE files
+.DS_Store
+Thumbs.db
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
