@@ -1,0 +1,33 @@
+﻿<!--
+NIM: 2481032
+Name: Ramos Otniel Lumban Gaol
+Course: Framework .NET Programming
+-->
+
+<!--Declare the model-->
+@model StudentInformationSystem.Models.Student
+
+@{
+    ViewData["Title"] = "Student Profile:";
+}
+<h1>Student Profile</h1>
+<hr />
+<h3>Personal Information</h3>
+<p><strong>NIM: </strong> @Model.NIM</p>
+<p><strong>Name: </strong> @Model.Name</p>
+<p><strong>Major: </strong> @Model.Major</p>
+<p><strong>Semester: </strong> @Model.Semester</p>
+<p><strong>GPA: </strong> @Model.GPA.ToString("F2")</p>
+<hr />
+
+@if(Model.GPA >= 3.51)
+{
+    <p style="color: green"><b>CUMLAUDE!</b></p>
+}else if (Model.GPA >= 2.67)
+{
+    <p><b>PASS</b></p>
+}
+else
+{
+    <p style="color: red"><b>NOT PASSED</b></p>
+}
